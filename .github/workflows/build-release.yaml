@@ -1,0 +1,19 @@
+name: Build release
+
+on:
+  push:
+    tags:
+      - v*
+
+jobs:
+  release:
+    name: release
+    runs-on: ubuntu-22.04
+    steps:
+      - uses: actions/checkout@v3
+      - name: Define release image tag
+        run: |
+          # v1.0.0
+          echo "IMAGE_TAG=${{ github.ref_name }}"
+          echo "IMAGE_TAG=${{ github.ref_name }}" >> $GITHUB_ENV
+      - run: echo "docker -t release-flow:$IMAGE_TAG build ."
