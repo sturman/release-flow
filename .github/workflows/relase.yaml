@@ -48,4 +48,4 @@ jobs:
         uses: docker/build-push-action@v4
         with:
           push: false
-          tags: release-flow:\$IMAGE_TAG
+          tags: release-flow:${{ env.IMAGE_TAG }}
