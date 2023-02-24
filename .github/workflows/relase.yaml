@@ -40,6 +40,6 @@ jobs:
       - name: Define release image tag
         run: |
           # v1.0.0
-          echo "IMAGE_TAG=${{ github.ref_name }}"
-          echo "IMAGE_TAG=${{ github.ref_name }}" >> $GITHUB_ENV
+          echo "IMAGE_TAG=${{ steps.version-bump.outputs.newTag }}"
+          echo "IMAGE_TAG=${{ steps.version-bump.outputs.newTag }}" >> $GITHUB_ENV
       - run: echo "docker -t release-flow:$IMAGE_TAG build ."
