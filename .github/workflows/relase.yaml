@@ -48,4 +48,4 @@ jobs:
         uses: docker/build-push-action@v4
         with:
           push: false
-          tags: 000000000000.dkr.ecr.us-west-1.amazonaws.com/release-flow:${IMAGE_TAG}
+          tags: release-flow:123
