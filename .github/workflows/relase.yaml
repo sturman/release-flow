@@ -1,0 +1,38 @@
+name: --RELEASE--
+
+on:
+  workflow_dispatch:
+    inputs:
+      version_type:
+        type: choice
+        default: patch
+        required: true
+        description: Bump version type
+        options:
+          - patch
+          - minor
+          - major
+
+jobs:
+  release:
+    name: version
+    runs-on: ubuntu-22.04
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v3
+      - name: Version Bump
+        id: version-bump
+        uses: 'phips28/gh-action-bump-version@9.1.0'
+        with:
+          tag-prefix: 'v'
+          version-type: ${{ github.event.inputs.version_type }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: 'Output Step'
+        run: echo "New tag ${{ steps.version-bump.outputs.newTag }}"
+      - name: Publish release
+        uses: softprops/action-gh-release@v1
+        with:
+          generate_release_notes: true
+          name: Release ${{ steps.version-bump.outputs.newTag }}
