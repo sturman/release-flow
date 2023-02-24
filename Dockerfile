@@ -2,7 +2,7 @@ FROM node:lts-alpine as builder
 
 WORKDIR /opt/app
 RUN date > date.txt
-RUN sleep 60
+RUN sleep 3
 RUN date >> date.txt
 
 FROM node:lts-alpine
