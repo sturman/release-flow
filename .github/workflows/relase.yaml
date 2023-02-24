@@ -1,4 +1,4 @@
-name: --RELEASE--
+name: Release
 
 on:
   workflow_dispatch:
@@ -37,3 +37,9 @@ jobs:
           generate_release_notes: true
           name: Release ${{ steps.version-bump.outputs.newTag }}
           tag_name: ${{ steps.version-bump.outputs.newTag }}
+      - name: Define release image tag
+        run: |
+          # v1.0.0
+          echo "IMAGE_TAG=${{ github.ref_name }}"
+          echo "IMAGE_TAG=${{ github.ref_name }}" >> $GITHUB_ENV
+      - run: echo "docker -t release-flow:$IMAGE_TAG build ."
