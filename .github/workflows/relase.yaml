@@ -42,4 +42,10 @@ jobs:
           # v1.2.3
           echo "IMAGE_TAG=${{ steps.version-bump.outputs.newTag }}"
           echo "IMAGE_TAG=${{ steps.version-bump.outputs.newTag }}" >> $GITHUB_ENV
-      - run: echo "docker -t release-flow:$IMAGE_TAG build ."
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v2
+      - name: Build and push container image
+        uses: docker/build-push-action@v4
+        with:
+          push: false
+          tags: release-flow:${IMAGE_TAG}
