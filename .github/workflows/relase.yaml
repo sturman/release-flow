@@ -20,7 +20,7 @@ jobs:
           echo "APP_VERSION=${APP_VERSION}" >> $GITHUB_ENV
           echo "IMAGE_TAG=${APP_VERSION}" >> $GITHUB_ENV
       - name: Publish dev release
-        if: github.ref_type == 'branch' && github.ref == 'refs/heads/master'
+        if: github.ref_type == 'branch' && github.ref == 'refs/heads/main'
         uses: softprops/action-gh-release@v1
         with:
           generate_release_notes: true
