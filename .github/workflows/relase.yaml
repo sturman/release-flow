@@ -19,7 +19,7 @@ jobs:
           APP_VERSION=$(cat package.json | jq -r '.version')${{ (endsWith(github.ref, 'dev') && '-dev') || '' }}
           echo "APP_VERSION=${APP_VERSION}" >> $GITHUB_ENV
           echo "IMAGE_TAG=${APP_VERSION}" >> $GITHUB_ENV
-      - name: Publish dev release
+      - name: Publish release
         if: github.ref_type == 'branch' && github.ref == 'refs/heads/main'
         uses: softprops/action-gh-release@v1
         with:
@@ -41,4 +41,4 @@ jobs:
       - release
     with:
       environment: ${{ github.ref == 'refs/heads/main' && 'production' || 'sandbox' }}
-      tag: ${{ github.event.inputs.tag }}
+      tag: ${{ env.IMAGE_TAG }}
