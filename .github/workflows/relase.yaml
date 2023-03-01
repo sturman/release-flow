@@ -37,6 +37,8 @@ jobs:
   deploy:
     name: deploy
     uses: sturman/release-flow/.github/workflows/deploy.yaml@main
+    needs:
+      - release
     with:
       environment: ${{ github.ref == 'refs/heads/main' && 'production' || 'sandbox' }}
       tag: ${{ github.event.inputs.tag }}
