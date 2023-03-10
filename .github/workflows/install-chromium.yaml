@@ -1,4 +1,4 @@
-name: Reusable deployment workflow
+name: Install Chromium
 on:
   workflow_dispatch:
 jobs:
