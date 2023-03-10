@@ -18,5 +18,7 @@ jobs:
           whereis chrome
           echo Chromium executable is located:
           which chrome
+          CHROMIUM_PATH=$(which chrome)
+          echo $CHROMIUM_PATH
           echo "CHROMIUM_PATH=$(which chrome)" >> $GITHUB_ENV
           CHROMIUM_PATH=${{ env.CHROMIUM_PATH }} env
