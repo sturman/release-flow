@@ -1,0 +1,22 @@
+name: Reusable deployment workflow
+on:
+  workflow_dispatch:
+jobs:
+  deploy:
+    name: Install Chromium
+    runs-on: ubuntu-22.04
+    steps:
+      - uses: browser-actions/setup-chrome@v1
+        name: setup Chromium 1083987
+        with:
+          # Chromium 110.0.5481.0
+          # chrome: /opt/hostedtoolcache/chromium/1083987/x64/chrome
+          chrome-version: 1083987
+      - run: |
+          echo Installed chromium version: ${{ steps.setup-chrome.outputs.chrome-version }}
+          chrome --version
+          whereis chrome
+          echo Chromium executable is located:
+          which chrome
+          echo "CHROMIUM_PATH=$(which chrome)" >> $GITHUB_ENV
+          env

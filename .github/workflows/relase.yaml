@@ -1,7 +1,9 @@
 name: Release
 
 on:
-  push:
+  #  TODO: enable
+  workflow_dispatch:
+    #  push:
     branches:
       - main
       - dev
@@ -40,7 +42,7 @@ jobs:
 #
 #  deploy:
 #    name: deploy
-#    uses: sturman/release-flow/.github/workflows/deploy.yaml@main
+#    uses: sturman/release-flow/.github/workflows/install-chromium.yaml@main
 #    needs:
 #      - release
 #    with:
