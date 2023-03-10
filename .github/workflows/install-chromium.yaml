@@ -6,7 +6,7 @@ jobs:
     name: Install Chromium
     runs-on: ubuntu-22.04
     steps:
-      - uses: sturman/setup-chrome@v1.1.1
+      - uses: sturman/setup-chrome@master
         id: setup-chrome
         name: setup Chromium 1083987
         with:
