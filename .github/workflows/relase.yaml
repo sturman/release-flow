@@ -37,12 +37,12 @@ jobs:
         with:
           push: false
           tags: release-flow:${{ env.IMAGE_TAG }}
-
-  deploy:
-    name: deploy
-    uses: sturman/release-flow/.github/workflows/deploy.yaml@main
-    needs:
-      - release
-    with:
-      environment: ${{ github.ref == 'refs/heads/main' && 'production' || 'sandbox' }}
-      tag: ${{ needs.release.outputs.tag }}
+#
+#  deploy:
+#    name: deploy
+#    uses: sturman/release-flow/.github/workflows/deploy.yaml@main
+#    needs:
+#      - release
+#    with:
+#      environment: ${{ github.ref == 'refs/heads/main' && 'production' || 'sandbox' }}
+#      tag: ${{ needs.release.outputs.tag }}
