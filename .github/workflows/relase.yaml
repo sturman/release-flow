@@ -21,9 +21,11 @@ jobs:
         uses: phips28/gh-action-bump-version@v9.1.0
         with:
           tag-prefix: 'v'
-          tag-suffix: (endsWith(github.ref, 'dev') && '-dev') || ''
+#          tag-suffix: (endsWith(github.ref, 'dev') && '-dev') || ''
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - run: |
+          echo ${{ steps.version-bump.outputs.newTag }}
       - name: Publish release
         if: github.ref_type == 'branch' && github.ref == 'refs/heads/main'
         uses: softprops/action-gh-release@v1
