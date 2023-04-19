@@ -1,6 +1,6 @@
 {
   "name": "release-flow",
-  "version": "2.2.1",
+  "version": "2.6.2",
   "description": "This is readme",
   "main": "index.js",
   "scripts": {

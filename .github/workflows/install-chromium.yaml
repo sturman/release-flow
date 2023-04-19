@@ -1,0 +1,26 @@
+name: Install Chromium
+on:
+  workflow_dispatch:
+jobs:
+  deploy:
+    name: Install Chromium
+    runs-on: ubuntu-22.04
+    steps:
+      - uses: sturman/setup-chrome@master
+        id: setup-chrome
+        name: setup Chromium 1083987
+        with:
+          # Chromium 110.0.5481.0
+          # chrome: /opt/hostedtoolcache/chromium/1083987/x64/chrome
+          chrome-version: 1083987
+      - run: |
+          echo Installed chromium version: ${{ steps.setup-chrome.outputs.chrome-version }}
+          echo Installed chromium path: ${{ steps.setup-chrome.outputs.chrome-path }}
+          chrome --version
+          whereis chrome
+          echo Chromium executable is located:
+          which chrome
+          CHROMIUM_PATH=$(which chrome)
+          echo $CHROMIUM_PATH
+          echo "CHROMIUM_PATH=$(which chrome)" >> $GITHUB_ENV
+          CHROMIUM_PATH=${{ env.CHROMIUM_PATH }} env
