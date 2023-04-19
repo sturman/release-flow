@@ -27,7 +27,7 @@ jobs:
         uses: softprops/action-gh-release@v1
         with:
           generate_release_notes: true
-          name: Release ${{ steps.version-bump.outputs.newTag }}
+          name: ${{ steps.version-bump.outputs.newTag }}
           tag_name: ${{ steps.version-bump.outputs.newTag }}
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v2
