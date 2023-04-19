@@ -22,9 +22,9 @@ jobs:
         with:
           tag-prefix: 'v'
           tag-suffix: ${{ (endsWith(github.ref, 'dev') && '-dev') || '' }}
-          major-wording: 'major:'
-          minor-wording: 'minor:'
-          patch-wording: 'patch:'
+          major-wording: 'major'
+          minor-wording: 'minor'
+          patch-wording: 'patch'
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - run: |
